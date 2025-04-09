@@ -1,0 +1,17 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '13.0'
+
+target 'IDVSample' do
+  use_frameworks!
+
+  pod 'IDVSDK', '~> 2.3'
+
+  pod 'IDVFaceSDK', '~> 2.3'
+  pod 'FaceCoreBasic', '~> 6.4'
+
+  pod 'IDVDocumentReader', '~> 2.3'
+  pod 'DocumentReaderFullAuthRFID', '~> 7.6'
+
+
+end
