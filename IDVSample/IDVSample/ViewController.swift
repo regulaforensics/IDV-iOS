@@ -103,6 +103,10 @@ class ViewController: UIViewController {
   }
 
   private func startWorkflow(workflowId: String) {
+    var config = StartWorkflowConfig.default()
+    config.metadata = ["test": true]
+    config.locale = "en"
+
     IDV.shared.startWorkflow(presenter: self) { result in
       switch result {
       case .success(let results):
