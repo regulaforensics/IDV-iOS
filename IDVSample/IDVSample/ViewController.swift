@@ -107,7 +107,7 @@ class ViewController: UIViewController {
     config.metadata = ["test": true]
     config.locale = "en"
 
-    IDV.shared.startWorkflow(presenter: self) { result in
+    IDV.shared.startWorkflow(presenter: self, config: config) { result in
       switch result {
       case .success(let results):
         print("Completed", results.sessionId)

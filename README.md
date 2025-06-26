@@ -104,8 +104,9 @@ IDV.shared.startWorkflow(presenter: presenterViewController) { result in
 To start workflow with metadata dictionary: 
 
 ```swift
-let metadata = ["key": "value"]
-IDV.shared.startWorkflow(presenter: self, metadata: metadata) { result in
+var config = StartWorkflowConfig.default()
+config.metadata = ["key": "value"]
+IDV.shared.startWorkflow(presenter: self, config: config) { result in
   switch result {
   case .success:
     // handle success
@@ -115,12 +116,25 @@ IDV.shared.startWorkflow(presenter: self, metadata: metadata) { result in
 }
 ```
 
+To start workflow with locale language: 
+
+```swift
+var config = StartWorkflowConfig.default()
+config.locale = "en"
+IDV.shared.startWorkflow(presenter: self, config: config) { result in
+  switch result {
+  case .success:
+    // handle success
+  case .failure(let error):
+    //handle error
+  }
+}
+```
 
 ## **7. Best Practices & Troubleshooting**
 
-- **Ensure all necessary dependencies** are included in `build.gradle.kts`.
 - **Grant camera permissions** before starting the workflow.
-- **Use proper credentials** when configuring `IdvConnectionConfig`.
+- **Use proper credentials** when configuring `IDVConnectionConfig`.
 
 ---
 
