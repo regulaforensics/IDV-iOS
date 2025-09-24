@@ -14,9 +14,15 @@ class ViewController: UIViewController {
   @IBOutlet private weak var startWorkflowButton: UIButton!
 
   private lazy var credentials: Credentials = {
-    .init(userName: "regula-idv" , //INSERT
-          password: "", //INSERT
-          host: "https://idv.regula.app",
+    .init(userName: "" , //TO INSERT
+          password: "", //TO INSERT
+          host: "https://", // TO INSERT
+          workflowId: "") //TO INSERT
+  }()
+
+  private lazy var apiKeyConfiguration: ApiKeyConfiguration = {
+    .init(apiKey: "", // TO INSERT
+          host: "", //TO INSERT
           workflowId: "") //INSERT
   }()
 
@@ -45,33 +51,14 @@ class ViewController: UIViewController {
     }
   }
 
-  private func configure(with url: String) {
-    showLoading()
-
-    IDV.shared.configure(with: .init(url: url)) { configureResults in
-      self.hideLoading()
-
-      switch configureResults {
-      case .success(let workflowIds):
-        if let workflowId = workflowIds.first {
-          self.prepareWorkflow(workflowId: workflowId)
-        } else {
-          print("Workflow configuration failed")
-        }
-      case .failure(let error):
-        print("Configure failed", error.fullChain)
-      }
-    }
-  }
-
   private func configureByCredentials() {
     guard credentials.isValid() else {
       print("Invalid credentials")
       return
     }
-    let config = IDVConnectionConfig(userName: credentials.userName,
-                                     password: credentials.password,
-                                     url: credentials.host)
+    let config = CredentialsConnectionConfig(userName: credentials.userName,
+                                             password: credentials.password,
+                                             baseURL: credentials.host)
     showLoading()
 
     IDV.shared.configure(with: config) { result in
@@ -87,7 +74,7 @@ class ViewController: UIViewController {
   }
 
   private func prepareWorkflow(workflowId: String) {
-    let workflowConfig = WorkflowConfig(workflowId: workflowId)
+    let workflowConfig = PrepareWorkflowConfig(workflowId: workflowId)
     self.showLoading()
     IDV.shared.prepareWorkflow(by: workflowConfig) { prepareResults in
       self.hideLoading()
@@ -103,7 +90,7 @@ class ViewController: UIViewController {
   }
 
   private func startWorkflow(workflowId: String) {
-    var config = StartWorkflowConfig.default()
+    let config = StartWorkflowConfig.default()
     config.metadata = ["test": true]
     config.locale = "en"
 
@@ -118,7 +105,7 @@ class ViewController: UIViewController {
   }
 
   //MARK: - Actions
-  @IBAction private func didPressConfigureByURL(_ sender: Any) {
+  @IBAction private func didPressConfigureByToken(_ sender: Any) {
     let scanController = ScanViewController()
     scanController.delegate = self
     navigationController?.pushViewController(scanController, animated: true)
@@ -126,6 +113,10 @@ class ViewController: UIViewController {
 
   @IBAction private func didPressConfigureByCredentials(_ sender: Any) {
     configureByCredentials()
+  }
+
+  @IBAction private func didPressConfigureByApikey(_ sender: Any) {
+    configureByApiKey()
   }
 
   @IBAction private func didPressStartWorkflow(_ sender: Any) {
@@ -138,7 +129,7 @@ class ViewController: UIViewController {
     view.isUserInteractionEnabled = false
     loadingActivity.startAnimating()
   }
-  
+
   private func hideLoading() {
     view.isUserInteractionEnabled = true
     loadingActivity.stopAnimating()
@@ -148,6 +139,57 @@ class ViewController: UIViewController {
     startWorkflowButton.isEnabled = latestPreparedWorkflowId != nil
   }
 }
+
+// MARK: - Api key
+extension ViewController {
+
+  private func configureByApiKey() {
+    guard apiKeyConfiguration.isValid() else {
+      print("Invalid api key configuration")
+      return
+    }
+    let config = ApiKeyConnectionConfig(apiKey: apiKeyConfiguration.apiKey,
+                                        baseURL: apiKeyConfiguration.host)
+    showLoading()
+
+    IDV.shared.configure(with: config) { result in
+      self.hideLoading()
+
+      switch result {
+      case .success:
+        self.prepareWorkflow(workflowId: self.apiKeyConfiguration.workflowId)
+      case .failure(let error):
+        print(error.fullChain)
+      }
+    }
+  }
+}
+
+// MARK: - Configure with Token
+
+extension ViewController {
+
+  private func configure(with tokenURL: String) {
+    showLoading()
+
+    IDV.shared.configure(with: TokenConnectionConfig(url: tokenURL)) { configureResults in
+      self.hideLoading()
+
+      switch configureResults {
+      case .success(let workflowIds):
+        if let workflowId = workflowIds.first {
+          self.prepareWorkflow(workflowId: workflowId)
+        } else {
+          print("Workflow configuration failed")
+        }
+      case .failure(let error):
+        print("Configure failed", error.fullChain)
+      }
+    }
+  }
+}
+
+// MARK: - ScanViewControllerDelegate
 
 extension ViewController: ScanViewControllerDelegate {
 

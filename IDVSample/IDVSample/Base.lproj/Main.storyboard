@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AnR-J4-reg">
-                                <rect key="frame" x="40" y="370.66666666666669" width="313" height="111"/>
+                                <rect key="frame" x="40" y="346.66666666666669" width="313" height="159"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qpo-LF-HuV">
                                         <rect key="frame" x="0.0" y="0.0" width="313" height="63"/>
@@ -27,19 +27,19 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="154" height="63"/>
                                                 <color key="backgroundColor" red="0.5450980392" green="0.39607843139999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Configure by QR" cornerStyle="medium">
+                                                <buttonConfiguration key="configuration" style="plain" title="Configure by Token" cornerStyle="medium">
                                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="didPressConfigureByURL:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wvQ-Iv-Y7n"/>
+                                                    <action selector="didPressConfigureByToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s10-jR-pLF"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgh-rF-wrt">
                                                 <rect key="frame" x="159" y="0.0" width="154" height="63"/>
                                                 <color key="backgroundColor" red="0.5450980392" green="0.39607843139999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Configure by credentials">
+                                                <buttonConfiguration key="configuration" style="plain" title="Configure by Credentials">
                                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
@@ -49,8 +49,25 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9uh-sf-PG5">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VVR-Cl-QRc">
                                         <rect key="frame" x="0.0" y="73" width="313" height="38"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dG-BG-Bd8">
+                                                <rect key="frame" x="0.0" y="0.0" width="313" height="38"/>
+                                                <color key="backgroundColor" red="0.5450980392" green="0.39607843139999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Configure by APIkey" cornerStyle="medium">
+                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="didPressConfigureByApikey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xE0-ir-BZR"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9uh-sf-PG5">
+                                        <rect key="frame" x="0.0" y="121" width="313" height="38"/>
                                         <color key="backgroundColor" red="0.5450980392" green="0.39607843139999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Start Workflow">

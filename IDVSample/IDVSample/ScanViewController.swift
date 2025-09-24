@@ -65,7 +65,9 @@ class ScanViewController: UIViewController {
     previewLayer.masksToBounds = true
     view.layer.addSublayer(previewLayer)
 
-    captureSession.startRunning()
+    DispatchQueue.global(qos: .userInteractive).async {
+      self.captureSession.startRunning()
+    }
   }
 
   func failed() {
@@ -86,7 +88,9 @@ class ScanViewController: UIViewController {
     super.viewWillAppear(animated)
 
     if !captureSession.isRunning {
-      captureSession.startRunning()
+      DispatchQueue.global(qos: .userInteractive).async {
+        self.captureSession.startRunning()
+      }
     }
   }
 
