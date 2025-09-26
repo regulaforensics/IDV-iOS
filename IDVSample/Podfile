@@ -8,10 +8,12 @@ target 'IDVSample' do
   pod 'IDVSDK', '~> 3.1'
 
   pod 'IDVFaceSDK', '~> 3.1'
+  pod 'FaceSDK', '~> 7.2'
   pod 'FaceCoreBasic', '~> 7.2'
 
   pod 'IDVDocumentReader', '~> 3.1'
-  pod 'DocumentReaderFullAuthRFID', '~> 8.2'
+  pod 'DocumentReader', '~> 8.2'
+  pod 'DocumentReaderFullAuthRFID', '~> 8.3'
 
 
 end
