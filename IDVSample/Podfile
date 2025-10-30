@@ -6,10 +6,8 @@ target 'IDVSample' do
   use_frameworks!
 
   pod 'IDVSDK', '~> 3.1'
-
-  pod 'IDVFaceSDK', '~> 3.1'
-  pod 'FaceSDK', '~> 7.2'
-  pod 'FaceCoreBasic', '~> 7.2'
+  pod 'IDVIProov', '~> 3.1'
+  pod 'iProov', '~> 12.5'
 
   pod 'IDVDocumentReader', '~> 3.1'
   pod 'DocumentReader', '~> 8.2'
