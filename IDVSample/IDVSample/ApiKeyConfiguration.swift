@@ -8,9 +8,8 @@
 struct ApiKeyConfiguration {
   let apiKey: String
   let host: String
-  let workflowId: String
 
   func isValid() -> Bool {
-    [apiKey, host, workflowId].allSatisfy { $0.isEmpty == false }
+    [apiKey, host].allSatisfy { $0.isEmpty == false }
   }
 }

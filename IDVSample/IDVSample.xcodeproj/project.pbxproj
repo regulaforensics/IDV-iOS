@@ -19,6 +19,7 @@
 		5D91828B2D8AB81300EBDBC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D9182802D8AB81300EBDBC1 /* LaunchScreen.storyboard */; };
 		5D91828C2D8AB81300EBDBC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D9182822D8AB81300EBDBC1 /* Main.storyboard */; };
 		7B12DD012E61C6560051A7C9 /* ApiKeyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B12DD002E61C6560051A7C9 /* ApiKeyConfiguration.swift */; };
+		7B600B3E2EC3675400685B77 /* WorkflowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B600B3D2EC3675400685B77 /* WorkflowCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		5D9182842D8AB81300EBDBC1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5D91828D2D8ABC9200EBDBC1 /* IDVSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IDVSample.entitlements; sourceTree = "<group>"; };
 		7B12DD002E61C6560051A7C9 /* ApiKeyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyConfiguration.swift; sourceTree = "<group>"; };
+		7B600B3D2EC3675400685B77 /* WorkflowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowCell.swift; sourceTree = "<group>"; };
 		C746F1CFC11480EA86A1DC57 /* Pods_IDVSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IDVSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC3B015C04D66545991123E4 /* Pods-IDVSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDVSample.debug.xcconfig"; path = "Target Support Files/Pods-IDVSample/Pods-IDVSample.debug.xcconfig"; sourceTree = "<group>"; };
 		DB0FD8C897E1F5C03DF4F10E /* Pods-IDVSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDVSample.release.xcconfig"; path = "Target Support Files/Pods-IDVSample/Pods-IDVSample.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				5D9182822D8AB81300EBDBC1 /* Main.storyboard */,
 				5D9182832D8AB81300EBDBC1 /* SceneDelegate.swift */,
 				5D9182842D8AB81300EBDBC1 /* ViewController.swift */,
+				7B600B3D2EC3675400685B77 /* WorkflowCell.swift */,
 				5D8C77F52D94539300B83B23 /* Credentials.swift */,
 				7B12DD002E61C6560051A7C9 /* ApiKeyConfiguration.swift */,
 				5D6409FD2D8AEF8D007DE9A7 /* ScanViewController.swift */,
@@ -242,6 +245,7 @@
 				5D8C77F62D94539300B83B23 /* Credentials.swift in Sources */,
 				5D9182882D8AB81300EBDBC1 /* ViewController.swift in Sources */,
 				5D6409FE2D8AEF8D007DE9A7 /* ScanViewController.swift in Sources */,
+				7B600B3E2EC3675400685B77 /* WorkflowCell.swift in Sources */,
 				7B12DD012E61C6560051A7C9 /* ApiKeyConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
