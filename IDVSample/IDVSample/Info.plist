@@ -37,5 +37,7 @@
 		<string>A0000002480300</string>
 		<string>A00000045645444C2D3031</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is used to verify where the data is submitted and to ensure the accuracy of the information you provide.</string>
 </dict>
 </plist>
