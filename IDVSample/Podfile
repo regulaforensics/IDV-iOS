@@ -5,15 +5,15 @@ platform :ios, '14.0'
 target 'IDVSample' do
   use_frameworks!
 
-  pod 'IDVSDK', '~> 3.1'
+  pod 'IDVSDK', '~> 3.2'
 
-  pod 'IDVFaceSDK', '~> 3.1'
+  pod 'IDVFaceSDK', '~> 3.2'
   pod 'FaceSDK', '~> 7.2'
   pod 'FaceCoreBasic', '~> 7.2'
 
-  pod 'IDVDocumentReader', '~> 3.1'
-  pod 'DocumentReader', '~> 8.2'
-  pod 'DocumentReaderFullAuthRFID', '~> 8.3'
+  pod 'IDVDocumentReader', '~> 3.2'
+  pod 'DocumentReader', '~> 8.4'
+  pod 'DocumentReaderFullAuthRFID', '~> 8.4'
 
 
 end
