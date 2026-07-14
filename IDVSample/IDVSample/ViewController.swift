@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     case configuring
     case loadingWorkflows
     case preparingWorkflows
+    case iamLogin
 
     var loadingText: String? {
       switch self {
@@ -23,6 +24,8 @@ class ViewController: UIViewController {
         return "Loading workflows …"
       case .preparingWorkflows:
         return "Preparing workflow …"
+      case .iamLogin:
+        return "IAM logging in …"
       }
     }
   }
@@ -49,7 +52,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var restoreModeSwitch: UISwitch!
 
   @IBOutlet private weak var startWorkflowButton: UIButton!
-
+  @IBOutlet private weak var IAMLoginButton: UIButton!
 
   private lazy var credentials: Credentials = {
     .init(userName: "" , //TO INSERT
@@ -63,6 +66,13 @@ class ViewController: UIViewController {
   }()
 
   private lazy var tokenUrl: String = "" //TO INSERT
+
+  private lazy var iamLoginConfiguration: IAMLoginConfiguration = {
+    .init(
+      applicationId: "", // TO INSERT
+      baseURL: "" //TO INSERT
+    )
+  }()
 
   private var latestPreparedWorkflowId: String? {
     didSet {
@@ -82,6 +92,8 @@ class ViewController: UIViewController {
     workflowsTableView.dataSource = self
     workflowsTableView.delegate = self
     workflowsTableView.register(WorkflowCell.self, forCellReuseIdentifier: "WorkflowCell")
+
+    IAMLoginButton.isEnabled = iamLoginConfiguration.isValid()
   }
 
   // MARK: - IDV Calls
@@ -227,6 +239,26 @@ class ViewController: UIViewController {
     }
   }
 
+  // MARK: - IDV IAM Login
+
+  private func iamLogin() {
+
+    let config = LoginConfig(applicationId: iamLoginConfiguration.applicationId,
+                             baseURL: iamLoginConfiguration.baseURL,
+                             locale: "en",
+                             metadata: ["test": true])
+    self.showLoading(step: .iamLogin)
+    IDV.shared.startLogin(presenter: self, config: config) { [weak self] result in
+      self?.hideLoading()
+      switch result {
+      case .success(let code):
+        self?.showAlert(title: "IAM Login completed", message: code)
+      case .failure(let error):
+        self?.showAlert(title: "IAM Login failed", message: error.fullChain)
+      }
+    }
+  }
+
   //MARK: - Actions
 
   @IBAction private func didPressConfigureByToken(_ sender: Any) {
@@ -258,6 +290,10 @@ class ViewController: UIViewController {
   @IBAction private func didPressStartWorkflow(_ sender: Any) {
     guard let latestPreparedWorkflowId else { return }
     startWorkflow(workflowId: latestPreparedWorkflowId)
+  }
+
+  @IBAction private func didPressIAMLogin(_ sender: Any) {
+    iamLogin()
   }
 
   //MARK: Supplementary
