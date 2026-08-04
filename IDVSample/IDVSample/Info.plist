@@ -4,6 +4,8 @@
 <dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>The app needs access for connecting with Regula device</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -35,7 +37,9 @@
 		<string>A0000002480100</string>
 		<string>A0000002480200</string>
 		<string>A0000002480300</string>
+		<string>A0000002480400</string>
 		<string>A00000045645444C2D3031</string>
+		<string>D2760000850101</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location is used to verify where the data is submitted and to ensure the accuracy of the information you provide.</string>
