@@ -10,7 +10,7 @@ The projects are intended as a reference for developers exploring the SDK and it
 Before running the sample projects, make sure that:
 
 - Xcode **16.0** and above is installed.
-- Minimum Deployment Target is set to **iOS 14.0**.
+- Minimum Deployment Target is set to **iOS 15.0**.
 - Camera permission is enabled in the app’s `Info.plist`.
 - The `Near Field Communication Tag Reading` capability is enabled the application target.
 
